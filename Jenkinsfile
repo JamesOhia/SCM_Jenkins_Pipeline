@@ -1,14 +1,14 @@
 pipeline{
   agent any
   stages{
-    stage("Build"){
+    stage("Install Newman"){
       steps{
-        echo "This is the Build stage"
+        sh "npm install -g newman"
       }
     }
-    stage("Test"){
+    stage("Run Collection"){
       steps{
-        echo "This is the Test stage"
+        sh "newman run BAAS_Account_Enquiry.postman_collection.json -e BAAS_Environment.postman_environment.json"
       }
     }
     stage("Deploy"){
