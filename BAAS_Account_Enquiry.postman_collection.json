@@ -1,0 +1,2442 @@
+{
+	"info": {
+		"_postman_id": "a9b09912-0f29-43a0-9856-d15eb51cde55",
+		"name": "BAAS_Account_Enquiry Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26077613",
+		"_collection_link": "https://jetteam100.postman.co/workspace/BAAS~0dcebb11-05a0-4ab5-b1ac-95f32dd99407/collection/26077613-a9b09912-0f29-43a0-9856-d15eb51cde55?action=share&source=collection_link&creator=26077613"
+	},
+	"item": [
+		{
+			"name": "Account Inquiry Copy",
+			"item": [
+				{
+					"name": "B2B Account Summaries - Multiple Account Balance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Success\");",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0]).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Correlation Id",
+								"type": "text"
+							},
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							},
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Required",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "product_id",
+								"value": "",
+								"description": "Product Id",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountNumbers\": [\r\n    \"1289907027\", \"2336120039\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummaries",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummaries"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": "1289907027",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Required",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "product_id",
+										"value": "",
+										"description": "Product Id",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accountNumbers\": [\r\n    \"1289907027\", \"2336120039\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummaries",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummaries"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 00:08:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n            \"accountNumber\": \"1289907027\",\n            \"accountStatus\": null,\n            \"drawingPower\": \"0\",\n            \"customerId\": \"1289907\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 1567408.95,\n            \"ledgerBalance\": 2542884.22,\n            \"totalDebit\": 102408949.89,\n            \"totalCredit\": 104951834.11,\n            \"lienAmount\": 975475.27,\n            \"openingDate\": \"07/03/2013 00:00:00\",\n            \"schemeCode\": \"OD210\"\n        },\n        {\n            \"accountName\": \"OJO AKEEM BABAWALE\",\n            \"accountNumber\": \"2336120039\",\n            \"accountStatus\": \"A\",\n            \"drawingPower\": \"0\",\n            \"customerId\": \"2336120\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 964016.12,\n            \"ledgerBalance\": 964116.12,\n            \"totalDebit\": 5888088.7,\n            \"totalCredit\": 6852204.82,\n            \"lienAmount\": 100,\n            \"openingDate\": \"04/15/2016 00:00:00\",\n            \"schemeCode\": \"SB115\"\n        }\n    ],\n    \"code\": \"00\",\n    \"description\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "B2B Account Summaries - One Account Balance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries -B2B Account Summaries - One Account Balance Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Success\");",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries -B2B Account Summaries - One Account Balance Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0]).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Correlation Id",
+								"type": "text"
+							},
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							},
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Required",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "product_id",
+								"value": "",
+								"description": "Product Id",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountNumbers\": [\r\n    \"1289907027\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummaries",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummaries"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": "1289907027",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Required",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "product_id",
+										"value": "",
+										"description": "Product Id",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accountNumbers\": [\r\n    \"1289907027\", \"2336120039\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummaries",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummaries"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 00:08:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n            \"accountNumber\": \"1289907027\",\n            \"accountStatus\": null,\n            \"drawingPower\": \"0\",\n            \"customerId\": \"1289907\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 1567408.95,\n            \"ledgerBalance\": 2542884.22,\n            \"totalDebit\": 102408949.89,\n            \"totalCredit\": 104951834.11,\n            \"lienAmount\": 975475.27,\n            \"openingDate\": \"07/03/2013 00:00:00\",\n            \"schemeCode\": \"OD210\"\n        },\n        {\n            \"accountName\": \"OJO AKEEM BABAWALE\",\n            \"accountNumber\": \"2336120039\",\n            \"accountStatus\": \"A\",\n            \"drawingPower\": \"0\",\n            \"customerId\": \"2336120\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 964016.12,\n            \"ledgerBalance\": 964116.12,\n            \"totalDebit\": 5888088.7,\n            \"totalCredit\": 6852204.82,\n            \"lienAmount\": 100,\n            \"openingDate\": \"04/15/2016 00:00:00\",\n            \"schemeCode\": \"SB115\"\n        }\n    ],\n    \"code\": \"00\",\n    \"description\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "B2B Account Summaries - Null Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries -B2B Account Summaries - One Account Balance Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"List must not be empty.\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Correlation Id",
+								"type": "text"
+							},
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							},
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Required",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "product_id",
+								"value": "",
+								"description": "Product Id",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountNumbers\": [\r\n    \r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummaries",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummaries"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": "1289907027",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Required",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "product_id",
+										"value": "",
+										"description": "Product Id",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accountNumbers\": [\r\n    \"1289907027\", \"2336120039\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummaries",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummaries"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 00:08:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n            \"accountNumber\": \"1289907027\",\n            \"accountStatus\": null,\n            \"drawingPower\": \"0\",\n            \"customerId\": \"1289907\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 1567408.95,\n            \"ledgerBalance\": 2542884.22,\n            \"totalDebit\": 102408949.89,\n            \"totalCredit\": 104951834.11,\n            \"lienAmount\": 975475.27,\n            \"openingDate\": \"07/03/2013 00:00:00\",\n            \"schemeCode\": \"OD210\"\n        },\n        {\n            \"accountName\": \"OJO AKEEM BABAWALE\",\n            \"accountNumber\": \"2336120039\",\n            \"accountStatus\": \"A\",\n            \"drawingPower\": \"0\",\n            \"customerId\": \"2336120\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 964016.12,\n            \"ledgerBalance\": 964116.12,\n            \"totalDebit\": 5888088.7,\n            \"totalCredit\": 6852204.82,\n            \"lienAmount\": 100,\n            \"openingDate\": \"04/15/2016 00:00:00\",\n            \"schemeCode\": \"SB115\"\n        }\n    ],\n    \"code\": \"00\",\n    \"description\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "B2B Account Summaries - Invalid Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries - Invalid Account Number\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Invalid FCMB Nuban account(s): Invalid,\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Correlation Id",
+								"type": "text"
+							},
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							},
+							{
+								"key": "x-correlation-id",
+								"value": "",
+								"description": "Required",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "product_id",
+								"value": "",
+								"description": "Product Id",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accountNumbers\": [\r\n    \"Invalid\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummaries",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummaries"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": "1289907027",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Required",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "product_id",
+										"value": "",
+										"description": "Product Id",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accountNumbers\": [\r\n    \"1289907027\", \"2336120039\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummaries",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummaries"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Apr 2023 00:08:48 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n            \"accountNumber\": \"1289907027\",\n            \"accountStatus\": null,\n            \"drawingPower\": \"0\",\n            \"customerId\": \"1289907\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 1567408.95,\n            \"ledgerBalance\": 2542884.22,\n            \"totalDebit\": 102408949.89,\n            \"totalCredit\": 104951834.11,\n            \"lienAmount\": 975475.27,\n            \"openingDate\": \"07/03/2013 00:00:00\",\n            \"schemeCode\": \"OD210\"\n        },\n        {\n            \"accountName\": \"OJO AKEEM BABAWALE\",\n            \"accountNumber\": \"2336120039\",\n            \"accountStatus\": \"A\",\n            \"drawingPower\": \"0\",\n            \"customerId\": \"2336120\",\n            \"currency\": \"NGN\",\n            \"freezeReason\": null,\n            \"availableBalance\": 964016.12,\n            \"ledgerBalance\": 964116.12,\n            \"totalDebit\": 5888088.7,\n            \"totalCredit\": 6852204.82,\n            \"lienAmount\": 100,\n            \"openingDate\": \"04/15/2016 00:00:00\",\n            \"schemeCode\": \"SB115\"\n        }\n    ],\n    \"code\": \"00\",\n    \"description\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getB2BAccountSummary - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"success\");",
+									"});",
+									"",
+									"pm.test(\"B2B Account Summaries - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummary?accountNo=1289907027",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummary"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": "1289907027"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-token",
+										"value": "",
+										"description": "Required",
+										"type": "text"
+									},
+									{
+										"key": "UTCTimestamp",
+										"value": "",
+										"description": "Required",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummary?accountNo=1289907027",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummary"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 09:09:00 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n        \"accountNumber\": \"1289907027\",\n        \"accountStatus\": null,\n        \"drawingPower\": \"0\",\n        \"customerId\": \"1289907\",\n        \"currency\": \"NGN\",\n        \"freezeReason\": null,\n        \"availableBalance\": 1865972.44,\n        \"ledgerBalance\": 2841447.71,\n        \"totalDebit\": 102080233.54,\n        \"totalCredit\": 104921681.25,\n        \"lienAmount\": 975475.27,\n        \"openingDate\": \"07/03/2013 00:00:00\",\n        \"schemeCode\": \"OD210\"\n    },\n    \"code\": \"00\",\n    \"description\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getB2BAccountSummary - Null Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"getB2BAccountSummary - Null Account Number\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The accountNo field is required.\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummary?accountNo=",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummary"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-token",
+										"value": "",
+										"description": "Required",
+										"type": "text"
+									},
+									{
+										"key": "UTCTimestamp",
+										"value": "",
+										"description": "Required",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummary?accountNo=1289907027",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummary"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 09:09:00 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n        \"accountNumber\": \"1289907027\",\n        \"accountStatus\": null,\n        \"drawingPower\": \"0\",\n        \"customerId\": \"1289907\",\n        \"currency\": \"NGN\",\n        \"freezeReason\": null,\n        \"availableBalance\": 1865972.44,\n        \"ledgerBalance\": 2841447.71,\n        \"totalDebit\": 102080233.54,\n        \"totalCredit\": 104921681.25,\n        \"lienAmount\": 975475.27,\n        \"openingDate\": \"07/03/2013 00:00:00\",\n        \"schemeCode\": \"OD210\"\n    },\n    \"code\": \"00\",\n    \"description\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getB2BAccountSummary - Invalid Account Number Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"getB2BAccountSummary - Invalid Account Number Copy\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Fcmb Invalid Nuban Account\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/getB2BAccountSummary?accountNo=Invalid",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"getB2BAccountSummary"
+							],
+							"query": [
+								{
+									"key": "accountNo",
+									"value": "Invalid"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "B2B Account Summaries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-correlation-id",
+										"value": "",
+										"description": "Correlation Id",
+										"type": "text"
+									},
+									{
+										"key": "client_id",
+										"value": "250",
+										"description": "Client Identifier (Required)",
+										"type": "text"
+									},
+									{
+										"key": "x-token",
+										"value": "",
+										"description": "Required",
+										"type": "text"
+									},
+									{
+										"key": "UTCTimestamp",
+										"value": "",
+										"description": "Required",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://accountinquiry.fcmb-azr-msase.p.azurewebsites.net/api/AccountInquiry/getB2BAccountSummary?accountNo=1289907027",
+									"protocol": "https",
+									"host": [
+										"accountinquiry",
+										"fcmb-azr-msase",
+										"p",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"AccountInquiry",
+										"getB2BAccountSummary"
+									],
+									"query": [
+										{
+											"key": "accountNo",
+											"value": "1289907027"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Request-Context",
+									"value": "appId=cid-v1:c9e74486-d856-4bc9-80f9-729840f6d8dd"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Mar 2023 09:09:00 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"accountName\": \"OMOSUYI SUNDAY SAMUEL\",\n        \"accountNumber\": \"1289907027\",\n        \"accountStatus\": null,\n        \"drawingPower\": \"0\",\n        \"customerId\": \"1289907\",\n        \"currency\": \"NGN\",\n        \"freezeReason\": null,\n        \"availableBalance\": 1865972.44,\n        \"ledgerBalance\": 2841447.71,\n        \"totalDebit\": 102080233.54,\n        \"totalCredit\": 104921681.25,\n        \"lienAmount\": 975475.27,\n        \"openingDate\": \"07/03/2013 00:00:00\",\n        \"schemeCode\": \"OD210\"\n    },\n    \"code\": \"00\",\n    \"description\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Null Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Null Account Number\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The accountNumber field is required.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Invalid Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Null Account Number\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Fcmb Invalid Nuban Account\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"Invalid\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Null Consent ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Either the consentId field or OTP field must have a value. \");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Invalid Consent ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Consent has expired or the following field(s) is/are invalid: ConsentId, AccountNo,MerchantId,ProductId\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"Invalid\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Null Client Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The clientId field is required.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Invalid Product Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Invalid Product Id\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The request field is required.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": \"Invalid\",\r\n    \"requestId\": \"Jame11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Null RequestID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Null RequestID\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The requestId field is required.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By Otp Or ConsentId - Invalid RequestId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By Otp Or ConsentId - Invalid RequestId\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The field requestId must be a string with a maximum length of 16.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"1289907027\",\r\n    \"consentId\": \"F09C23F8-01AD-40A9-9AB0-3702ADD41F98\",\r\n    \"otp\": \"\",\r\n    \"clientId\": \"250\",\r\n    \"productId\": 1,\r\n    \"requestId\": \"Invalidrewvwevwevwevwevewvewvwv\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceByOtpOrConsentId",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceByOtpOrConsentId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By SchemeCode - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Success\");",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNo\": \"8660224016\",\r\n    \"requestId\": \"1234567890123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceBySchemeCode",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceBySchemeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By SchemeCode - Null Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Null Account Number\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The accountNo field is required.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNo\": \"\",\r\n    \"requestId\": \"1234567890123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceBySchemeCode",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceBySchemeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By SchemeCode - Invalid Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Null Account Number\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Fcmb Invalid Nuban Account\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNo\": \"Invalid\",\r\n    \"requestId\": \"1234567890123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceBySchemeCode",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceBySchemeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By SchemeCode - Account Number not registered with the Client ID Scheme Code",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Account Number not registered with the Client ID Scheme Code\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"invalid scheme code\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNo\": \"2336120039\",\r\n    \"requestId\": \"1234567890123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceBySchemeCode",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceBySchemeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By SchemeCode - Null Request ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Null Request ID\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The requestId field is required.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNo\": \"8660224016\",\r\n    \"requestId\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceBySchemeCode",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceBySchemeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance By SchemeCode - Invalid Request Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance By SchemeCode - Invalid Request Id\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"The field requestId must be a string with a minimum length of 16 and a maximum length of 16.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNo\": \"8660224016\",\r\n    \"requestId\": \"Invalid\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalanceBySchemeCode",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalanceBySchemeCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance via an Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance via an Account Number - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Success\");",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance via an Account Number - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalance?accountNumber=8660224016",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalance"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "8660224016",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance via an Account Number - Null data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance via an Account Number - Invalid data\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Unable to locate record\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalance?accountNumber=",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalance"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Balance via an Account Number - Invalid data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance via an Account Number - Invalid data\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Unable to locate record\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctBalance?accountNumber=Invalid",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctBalance"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "Invalid",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Currency via Account Number",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/acctCurrency?accountNumber=8660224016",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"acctCurrency"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "8660224016",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Occupation List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Get Account Balance via an Account Number - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData. description).to.eql(\"success\");",
+									"});",
+									"",
+									"pm.test(\"Get Occupation List - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0]).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"description": "Client Identifier (Required)",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/occupationlists",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"occupationlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account Status - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Account Status - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"success\");",
+									"});",
+									"",
+									"pm.test(\"Name Enquiry - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/accountStatusV1?accountNumber=8660224016",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"accountStatusV1"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "8660224016",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account Status - Null Account Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/accountStatusV1?accountNumber=",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"accountStatusV1"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Name Enquiry - Success",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Name Enquiry - Success\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.description).to.eql(\"Account Validation successful\");",
+									"});",
+									"",
+									"pm.test(\"Name Enquiry - Data Returned\", function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.not.empty",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "250",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{inquiryUrl}}/AccountInquiry/nameEnquiry?accountNumber=8660224016",
+							"host": [
+								"{{inquiryUrl}}"
+							],
+							"path": [
+								"AccountInquiry",
+								"nameEnquiry"
+							],
+							"query": [
+								{
+									"key": "accountNumber",
+									"value": "8660224016",
+									"description": "Required"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
