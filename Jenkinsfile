@@ -3,7 +3,15 @@ pipeline{
   stages{
     stage("Install Newman"){
       steps{
-        sh "npm install -g newman"
+        // Install Node.js if it's not already installed
+                    def nodeVersion = sh(script: 'node -v', returnStatus: true)
+                    if (nodeVersion != 0) {
+                        sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+                        sh 'sudo apt-get install -y nodejs'
+                    }
+
+                    // Install Newman using npm
+                    sh 'npm install -g newman'
       }
     }
     stage("Run Collection"){
