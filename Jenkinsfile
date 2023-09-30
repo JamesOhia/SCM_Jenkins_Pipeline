@@ -1,22 +1,19 @@
 pipeline{
   agent any
   stages{
-    stage("Install Newman"){
+    stage("Build"){
       steps{
-        // Install Node.js if it's not already installed
-        def nodeVersion = sh(script: 'node -v', returnStatus: true)
-        if (nodeVersion != 0) {
-          sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-          sh 'sudo apt-get install -y nodejs'
+        when{
+          expression{
+            BRANCH_NAME == "Dev"
+          }
         }
-
-        // Install Newman using npm
-        sh 'npm install -g newman'
+        echo "This is the build stage"
       }
     }
-    stage("Run Collection"){
+    stage("Test"){
       steps{
-        sh "newman run BAAS_Account_Enquiry.postman_collection.json -e BAAS_Environment.postman_environment.json"
+        echo "This is the Test stage"
       }
     }
     stage("Deploy"){
