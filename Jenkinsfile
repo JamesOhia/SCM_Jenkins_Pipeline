@@ -2,6 +2,7 @@ pipeline{
   agent any
   environment{
     VERSION = "1.1"
+    CREDENTIALS = credentials('Test-Script')
   }
   stages{
     stage("Build"){
@@ -12,6 +13,7 @@ pipeline{
       }
       steps{
         echo "This is the build stage"
+        echo "The credentials is ${CREDENTIALS}"
       }
     }
     stage("Test"){
