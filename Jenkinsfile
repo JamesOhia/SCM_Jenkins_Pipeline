@@ -2,7 +2,7 @@ pipeline{
   agent any
   environment{
     VERSION = "1.1"
-    CREDENTIALS = credentials('Test-Script')
+    //CREDENTIALS = credentials('Test-Script')
   }
   parameters{
     choice(name: 'version', choices: ['1.1', '1.2', '1.3', '1.4'], description:'Version to select')
@@ -16,13 +16,9 @@ pipeline{
         }
       }
       steps{
-        try{
           echo "This is the build stage"
-          echo "The credentials is ${CREDENTIALS}"
-        } catch(Exception e){
-          log.info("Error with the credentials")
-        }
-        
+          //echo "The credentials is ${CREDENTIALS}"
+        } 
       }
     }
     stage("Test"){
