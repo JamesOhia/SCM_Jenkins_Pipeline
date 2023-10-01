@@ -13,3 +13,5 @@ def deploy(){
      echo "This is the Deployment stage"
     echo "The version we are deploying is ${params.version}"
 }
+
+return this
