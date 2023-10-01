@@ -16,8 +16,13 @@ pipeline{
         }
       }
       steps{
-        echo "This is the build stage"
-        echo "The credentials is ${CREDENTIALS}"
+        try{
+          echo "This is the build stage"
+          echo "The credentials is ${CREDENTIALS}"
+        } catch(Exception e){
+          log.info("Error with the credentials")
+        }
+        
       }
     }
     stage("Test"){

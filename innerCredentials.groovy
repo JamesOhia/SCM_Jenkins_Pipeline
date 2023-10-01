@@ -5,8 +5,10 @@ pipeline{
     gradle
     jdk
   }
+  
   environment{
     VERSION = "1.1"
+    CREDENTIALS = credentials('Test-Script')
   }
   parameters{
     //DataType(name, defaultValue, description)
