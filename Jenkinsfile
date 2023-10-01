@@ -5,7 +5,7 @@ pipeline{
     CREDENTIALS = credentials('Test-Script')
   }
   parameters{
-    choice(name: 'version', choices '[1.1, 1.2, 1.3, 1.4]', description:'Version to select')
+    choice(name: 'version', choices ['1.1', '1.2', '1.3', '1.4'], description:'Version to select')
     booleanParams(name: 'executeTest', defaultValue: true, description:'Either Test should be executed or skipped')
   }
   stages{
