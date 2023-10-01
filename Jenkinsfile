@@ -1,9 +1,9 @@
 pipeline{
   agent any
-  environment{
+  /*environment{
     VERSION = "1.1"
     //CREDENTIALS = credentials('Test-Script')
-  }
+  }*/
   parameters{
     choice(name: 'version', choices: ['1.1', '1.2', '1.3', '1.4'], description:'Version to select')
     booleanParam(name: 'executeTest', defaultValue: true, description:'Either Test should be executed or skipped')
@@ -23,7 +23,7 @@ pipeline{
     stage("Test"){
       steps{
         echo "This is the Test stage"
-        echo "This is version ${VERSION}"
+        //echo "This is version ${VERSION}"
       }
     }
     stage("Deploy"){
