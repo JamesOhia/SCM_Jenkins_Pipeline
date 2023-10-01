@@ -1,3 +1,4 @@
+def gv
 pipeline{
   agent any
   environment{
@@ -9,6 +10,13 @@ pipeline{
     booleanParam(name: 'executeTest', defaultValue: true, description:'Either Test should be executed or skipped')
   }
   stages{
+    stage("init"){
+      steps{
+        script{
+          gv = load "ExternalScript.groovy"
+        }
+      }
+    }
     stage("Build"){
       when{
         expression{
@@ -16,8 +24,9 @@ pipeline{
         }
       }
       steps{
-          echo "This is the build stage"
-          echo "The credentials is ${CREDENTIALS}"
+          script{
+            gv.build();
+          }
         } 
       }
     stage("Test"){
@@ -27,14 +36,16 @@ pipeline{
         }
       }
       steps{
-        echo "This is the Test stage"
-        echo "This is version ${VERSION}"
+        script{
+          gv.test();
+        }
       }
     }
     stage("Deploy"){
       steps{
-        echo "This is the Deployment stage"
-        echo "The version we are deploying is ${params.version}"
+       script{
+        gv.deploy();
+       }
       }
     }
   }
