@@ -20,7 +20,6 @@ pipeline{
           //echo "The credentials is ${CREDENTIALS}"
         } 
       }
-    }
     stage("Test"){
       steps{
         echo "This is the Test stage"
