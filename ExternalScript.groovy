@@ -14,4 +14,8 @@ def deploy(){
     echo "The version we are deploying is ${params.version}"
 }
 
+def newmanInstall(){
+    bat "npm install -g newman"
+}
+
 return this

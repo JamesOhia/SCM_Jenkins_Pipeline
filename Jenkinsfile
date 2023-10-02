@@ -1,6 +1,9 @@
 def gv
 pipeline{
   agent any
+  tools{
+    nodejs "Newman"
+  }
   environment{
     VERSION = "1.1"
     CREDENTIALS = credentials('Test-Script')
@@ -46,6 +49,13 @@ pipeline{
        script{
         gv.deploy();
        }
+      }
+    }
+    stage("Newman_Install"){
+      steps{
+        script{
+          gv.newmanInstall();
+        }
       }
     }
   }
