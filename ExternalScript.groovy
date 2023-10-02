@@ -18,4 +18,8 @@ def newmanInstall(){
     bat "npm install -g newman"
 }
 
+def newmanRun(){
+    bat "newman run BAAS_Account_Enquiry.postman_collection.json -e BAAS_Environment.postman_environment.json"
+}
+
 return this

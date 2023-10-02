@@ -58,5 +58,12 @@ pipeline{
         }
       }
     }
+    stage("Newman_Run"){
+      steps{
+        script{
+          gv.newmanRun();
+        }
+      }
+    }
   }
 }
