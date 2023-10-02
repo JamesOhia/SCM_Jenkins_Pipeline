@@ -16,10 +16,11 @@ def deploy(){
 
 def newmanInstall(){
     bat "npm install -g newman"
+    bat "npm install -g newman-reporter-htmlextra"
 }
 
 def newmanRun(){
-    bat "newman run BAAS_Account_Enquiry.postman_collection.json -e BAAS_Environment.postman_environment.json"
+    bat "newman run BAAS_Account_Enquiry.postman_collection.json -e BAAS_Environment.postman_environment.json --disable-unicode -r htmlextra"
 }
 
 return this
